@@ -28,20 +28,22 @@
 #print(c3.limit)
 
 class Creditcard:
+    limit_raise_amount = 1.5
+
     def __init__(self, number, company, limit = 1000):
        self.number = number
        self.company = company
        self.limit = limit
     def hide(self):
         self.number = f"**** **** **** {self.number[-4:]}"
+    def raise_limit(self):
+        self.limit = Creditcard.limit_raise_amount * self.limit
+        print(f'New limit raised to {self.limit}')
 
 
 
-c1 = Creditcard(number="4545656532321212", company="Uala")
-
-print(c1.number)
-c1.hide()
-print(c1.number)
+c1 = Creditcard(number="4545656532321212", company="Uala", limit=1000)
+c1.raise_limit()
 
 
 
